@@ -1,0 +1,13 @@
+name: jaoSuperAchievement
+main: com.jaoafa.jaoSuperAchievement.jaoSuperAchievement
+version: 0.0.1
+description: jao実績
+database: true
+softdepend: [PermissionsEx, LuckPerms]
+author: mine_book000
+commands:
+   jsa:
+      description: このプラグインに関する設定や情報が確認できます。
+      usage: /<command>
+      permission: jaosuperachievement.jsa
+      permission-message: You do not have permission to perform this command.
