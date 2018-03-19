@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * jaotanの名を言う
  * 「jaotan」を含むメッセージを送信したとき
  *
- * @since 2018/02/17
+ * @since 2018/03/20
  * @category jao Achievement
  *
  */
@@ -26,7 +26,6 @@ public class Speakjaotan implements Listener {
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void OnSpeakjaotan(PlayerChatEvent event){
-
 		String message = event.getMessage();
 		Player player = event.getPlayer();
 		if(!message.contains("jaotan")){
