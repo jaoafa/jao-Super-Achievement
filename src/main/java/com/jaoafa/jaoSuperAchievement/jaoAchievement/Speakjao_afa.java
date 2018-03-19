@@ -35,7 +35,7 @@ public class Speakjao_afa implements Listener {
 	public void OnSpeakjaotan(PlayerChatEvent event){
 		String message = event.getMessage();
 		Player player = event.getPlayer();
-		OldMessage.put(player.getUniqueId(), message);
+		if(!message.equalsIgnoreCase("afa")) OldMessage.put(player.getUniqueId(), message);
 		if(!message.equalsIgnoreCase("afa")){
 			return;
 		}
