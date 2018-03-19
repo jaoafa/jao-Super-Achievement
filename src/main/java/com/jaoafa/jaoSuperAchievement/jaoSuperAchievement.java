@@ -19,6 +19,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.Firstjao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.ForestBear;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.It_was_hoe;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjao_afa;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaojao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.WhoIsTheBear;
 
@@ -47,6 +48,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new FirstX4Z(this), this);
 		getServer().getPluginManager().registerEvents(new ForestBear(this), this);
 		getServer().getPluginManager().registerEvents(new WhoIsTheBear(this), this);
+		getServer().getPluginManager().registerEvents(new Speakjaojao(this), this);
 	}
 
 	public static String sqlserver = "jaoafa.com";
