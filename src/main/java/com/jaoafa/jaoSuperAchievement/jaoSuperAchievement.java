@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jaoafa.jaoSuperAchievement.Command.Cmd_JSA;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.It_was_hoe;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaotan;
 
 public class jaoSuperAchievement extends JavaPlugin {
 	/**
@@ -33,6 +34,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 
 	private void LoadjaoAchievements(){
 		getServer().getPluginManager().registerEvents(new It_was_hoe(this), this);
+		getServer().getPluginManager().registerEvents(new Speakjaotan(this), this);
 	}
 
 	public static String sqlserver = "jaoafa.com";

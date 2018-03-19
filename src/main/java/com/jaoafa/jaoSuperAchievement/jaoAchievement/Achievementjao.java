@@ -40,7 +40,7 @@ public class Achievementjao {
 		Statement statement = jaoSuperAchievement.getNewStatement();
 
 		try {
-			statement.executeUpdate("INSERT INTO jaoSuperAchievement (player, uuid, achievement_typeid, date) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', '" + type.getID() + "', CURRENT_TIMESTAMP);");
+			statement.executeUpdate("INSERT INTO jaoSuperAchievement (player, uuid, achievement_typeid, date) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', " + type.getID() + ", CURRENT_TIMESTAMP);");
 		} catch (SQLException e) {
 			jaoSuperAchievement.report(e);
 			return false;

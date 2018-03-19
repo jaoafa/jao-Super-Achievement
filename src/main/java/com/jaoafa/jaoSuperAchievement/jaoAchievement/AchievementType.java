@@ -15,9 +15,11 @@ public class AchievementType {
 		try {
 			ResultSet res = statement.executeQuery("SELECT * FROM jaoSuperAchievement_Type WHERE id = " + id);
 			if(res.next()){
-				id = res.getInt("id");
+				this.id = res.getInt("id");
 				name = res.getString("name");
 				description = res.getString("description");
+			}else{
+				throw new IllegalArgumentException("指定されたIDのjaoSuperAchievementは見つかりません。");
 			}
 		} catch (SQLException e) {
 			jaoSuperAchievement.report(e);
