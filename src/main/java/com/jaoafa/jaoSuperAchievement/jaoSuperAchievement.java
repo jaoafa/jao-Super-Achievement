@@ -25,6 +25,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 	public void onEnable() {
 		getCommand("jsa").setExecutor(new Cmd_JSA(this));
 		//
+		JavaPlugin = this;
 
 		LoadjaoAchievements();
 		Load_Config(); // Config Load
@@ -34,10 +35,12 @@ public class jaoSuperAchievement extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new It_was_hoe(this), this);
 	}
 
+	public static String sqlserver = "jaoafa.com";
 	public static String sqluser;
 	public static String sqlpassword;
 	public static Connection c = null;
 	public static FileConfiguration conf;
+	public static JavaPlugin JavaPlugin;
 	/**
 	 * コンフィグ読み込み
 	 * @author mine_book000
@@ -61,7 +64,12 @@ public class jaoSuperAchievement extends JavaPlugin {
 			getServer().getPluginManager().disablePlugin(this);
 			return;
 		}
-		MySQL MySQL = new MySQL("jaoafa.com", "3306", "jaoafa", sqluser, sqlpassword);
+
+		if(conf.contains("sqlserver")){
+			sqlserver = (String) conf.get("sqlserver");
+		}
+
+		MySQL MySQL = new MySQL(sqlserver, "3306", "jaoafa", sqluser, sqlpassword);
 
 		try {
 			c = MySQL.openConnection();
@@ -96,18 +104,18 @@ public class jaoSuperAchievement extends JavaPlugin {
 		try {
 			statement = jaoSuperAchievement.c.createStatement();
 		} catch (NullPointerException e) {
-			MySQL MySQL = new MySQL("jaoafa.com", "3306", "jaoafa", jaoSuperAchievement.sqluser, jaoSuperAchievement.sqlpassword);
+			MySQL MySQL = new MySQL(jaoSuperAchievement.sqlserver, "3306", "jaoafa", jaoSuperAchievement.sqluser, jaoSuperAchievement.sqlpassword);
 			try {
 				jaoSuperAchievement.c = MySQL.openConnection();
 				statement = jaoSuperAchievement.c.createStatement();
 			} catch (ClassNotFoundException | SQLException e1) {
 				// TODO 自動生成された catch ブロック
-				e1.printStackTrace();
+				report(e);
 				return null;
 			}
 		} catch (SQLException e) {
 			// TODO 自動生成された catch ブロック
-			e.printStackTrace();
+			report(e);
 			return null;
 		}
 
@@ -126,5 +134,9 @@ public class jaoSuperAchievement extends JavaPlugin {
 		Discord.send("293856671799967744", "AntiAlts2でエラーが発生しました。" + "\n"
 					+ "```" + sw.toString() + "```\n"
 					+ "Cause: `" + exception.getCause() + "`");
+	}
+
+	public static JavaPlugin JavaPlugin(){
+		return JavaPlugin;
 	}
 }
