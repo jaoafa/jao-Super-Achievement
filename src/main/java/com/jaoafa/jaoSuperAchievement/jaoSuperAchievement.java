@@ -10,10 +10,10 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jaoafa.jaoSuperAchievement.Command.Cmd_JSA;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Firstjao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.It_was_hoe;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaotan;
@@ -37,7 +37,8 @@ public class jaoSuperAchievement extends JavaPlugin {
 	private void LoadjaoAchievements(){
 		getServer().getPluginManager().registerEvents(new It_was_hoe(this), this);
 		getServer().getPluginManager().registerEvents(new Speakjaotan(this), this);
-		getServer().getPluginManager().registerEvents((Listener) new Firstjao(this), this);
+		getServer().getPluginManager().registerEvents(new Firstjao(this), this);
+		getServer().getPluginManager().registerEvents(new FirstImpatience(this), this);
 	}
 
 	public static String sqlserver = "jaoafa.com";

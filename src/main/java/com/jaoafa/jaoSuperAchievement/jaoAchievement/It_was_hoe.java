@@ -11,6 +11,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
+ * No. 1
+ *
  * It Was Hoe
  * 鍬を掲げて鍬への愛を叫ぶ。
  * 鍬を手に持った状態で「IWH！！IWH！！」と発言した場合

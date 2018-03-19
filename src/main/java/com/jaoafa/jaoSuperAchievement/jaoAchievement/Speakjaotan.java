@@ -9,6 +9,8 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
+ * No. 2
+ *
  * あのお方
  * jaotanの名を言う
  * 「jaotan」を含むメッセージを送信したとき
