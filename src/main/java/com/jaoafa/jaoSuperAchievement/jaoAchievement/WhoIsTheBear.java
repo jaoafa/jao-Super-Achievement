@@ -34,6 +34,7 @@ public class WhoIsTheBear implements Listener {
 		Player player = (Player) event.getPlayer();
 
 		ItemStack helmet = player.getInventory().getHelmet();
+		if(helmet == null) return;
 		if(helmet.getType() != Material.SKULL_ITEM){
 			return;
 		}
@@ -44,16 +45,19 @@ public class WhoIsTheBear implements Listener {
 		}
 
 		ItemStack chestplate = player.getInventory().getChestplate();
+		if(chestplate == null) return;
 		if(chestplate.getType() != Material.LEATHER_CHESTPLATE){
 			return;
 		}
 
 		ItemStack leggings = player.getInventory().getLeggings();
+		if(leggings == null) return;
 		if(leggings.getType() != Material.LEATHER_LEGGINGS){
 			return;
 		}
 
 		ItemStack boots = player.getInventory().getBoots();
+		if(boots == null) return;
 		if(boots.getType() != Material.LEATHER_BOOTS){
 			return;
 		}

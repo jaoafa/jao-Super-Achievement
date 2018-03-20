@@ -34,6 +34,7 @@ public class ForestBear implements Listener {
 		Player player = (Player) event.getPlayer();
 
 		ItemStack helmet = player.getInventory().getHelmet();
+		if(helmet == null) return;
 		if(helmet.getType() != Material.SKULL_ITEM){
 			return;
 		}
