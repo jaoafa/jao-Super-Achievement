@@ -18,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.jaoafa.jaoSuperAchievement.Discord;
 import com.jaoafa.jaoSuperAchievement.jaoSuperAchievement;
+import com.jaoafa.jaoSuperAchievement.AchievementAPI.jaoSuperAchievementEvent;
 
 public class Achievementjao {
 	public void AlreadyAchievementCheck(int id){
@@ -50,6 +51,9 @@ public class Achievementjao {
 		Bukkit.broadcastMessage("[" + ChatColor.RED + "j" + ChatColor.GOLD + "a" + ChatColor.YELLOW + "o" + ChatColor.GREEN + "S" + ChatColor.AQUA + "u" + ChatColor.BLUE + "p" + ChatColor.DARK_BLUE + "e" + ChatColor.RED + "r" + ChatColor.GOLD + "A" + ChatColor.YELLOW + "c" + ChatColor.GREEN + "h" + ChatColor.AQUA + "i" + ChatColor.BLUE + "e" + ChatColor.DARK_BLUE + "v" + ChatColor.RED + "e" + ChatColor.GOLD + "m" + ChatColor.YELLOW + "e" + ChatColor.GREEN + "n" + ChatColor.AQUA + "t" + ChatColor.RESET + "] "
 				+ player.getName() + "が「" + type.getName() + "」を取得しました！");
 		Discord.send("**[jaoSuperAchievement]** " + player.getName() + "が「" + type.getName() + "」を取得しました！");
+
+		jaoSuperAchievementEvent jaoSuperAchievementEvent = new jaoSuperAchievementEvent(player, type);
+		Bukkit.getServer().getPluginManager().callEvent(jaoSuperAchievementEvent);
 
 		Firework firework = player.getLocation().getWorld().spawn(player.getLocation().add(0, 3, 0), Firework.class);
 		FireworkMeta meta = firework.getFireworkMeta();
