@@ -33,6 +33,17 @@ public class FirstX4Z implements Listener {
 		Player player = event.getPlayer();
 
 		UUID X4Zuuid = UUID.fromString("5799296a-d1ec-4252-93bd-440bb9caa65c");
+		if(player.getUniqueId().equals(X4Zuuid)){
+			for(Player play: Bukkit.getServer().getOnlinePlayers()) {
+				if(!Achievementjao.getAchievement(play, new AchievementType(6))){
+					play.sendMessage("[" + ChatColor.RED + "j" + ChatColor.GOLD + "a" + ChatColor.YELLOW + "o" + ChatColor.GREEN + "S" + ChatColor.AQUA + "u" + ChatColor.BLUE + "p" + ChatColor.DARK_BLUE + "e" + ChatColor.RED + "r" + ChatColor.GOLD + "A" + ChatColor.YELLOW + "c" + ChatColor.GREEN + "h" + ChatColor.AQUA + "i" + ChatColor.BLUE + "e" + ChatColor.DARK_BLUE + "v" + ChatColor.RED + "e" + ChatColor.GOLD + "m" + ChatColor.YELLOW + "e" + ChatColor.GREEN + "n" + ChatColor.AQUA + "t" + ChatColor.RESET + "] "
+							+ "実績の解除中に問題が発生しました。もう一度お試しください。");
+					return;
+				}
+			}
+			return;
+		}
+
 		Player X4Z = Bukkit.getPlayer(X4Zuuid);
 		if(X4Z == null) return;
 		if(!X4Z.isOnline()) return;
