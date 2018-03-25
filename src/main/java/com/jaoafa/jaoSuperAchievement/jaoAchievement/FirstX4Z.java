@@ -1,5 +1,7 @@
 package com.jaoafa.jaoSuperAchievement.jaoAchievement;
 
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -30,7 +32,8 @@ public class FirstX4Z implements Listener {
 	public void OnFirstX4Z(PlayerJoinEvent event){
 		Player player = event.getPlayer();
 
-		Player X4Z = Bukkit.getPlayer("5799296a-d1ec-4252-93bd-440bb9caa65c");
+		UUID X4Zuuid = UUID.fromString("5799296a-d1ec-4252-93bd-440bb9caa65c");
+		Player X4Z = Bukkit.getPlayer(X4Zuuid);
 		if(X4Z == null) return;
 		if(!X4Z.isOnline()) return;
 
