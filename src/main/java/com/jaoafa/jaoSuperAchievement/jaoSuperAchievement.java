@@ -13,6 +13,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jaoafa.jaoSuperAchievement.Command.Cmd_JSA;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.AreYouReallyOkay;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Encounter_jaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstX4Z;
@@ -53,6 +54,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Speakjaojao(this), this);
 		getServer().getPluginManager().registerEvents(new SuperDOOMForYou(this), this);
 		getServer().getPluginManager().registerEvents(new Encounter_jaotan(this), this);
+		getServer().getPluginManager().registerEvents(new AreYouReallyOkay(this), this);
 	}
 
 	public static String sqlserver = "jaoafa.com";
