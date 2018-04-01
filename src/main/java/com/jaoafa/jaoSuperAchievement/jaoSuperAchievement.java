@@ -10,10 +10,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jaoafa.jaoSuperAchievement.Command.Cmd_JSA;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AreYouReallyOkay;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Encounter_jaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstX4Z;
@@ -43,18 +45,27 @@ public class jaoSuperAchievement extends JavaPlugin {
 	}
 
 	private void LoadjaoAchievements(){
-		getServer().getPluginManager().registerEvents(new It_was_hoe(this), this);
-		getServer().getPluginManager().registerEvents(new Speakjaotan(this), this);
-		getServer().getPluginManager().registerEvents(new Firstjao(this), this);
-		getServer().getPluginManager().registerEvents(new FirstImpatience(this), this);
-		getServer().getPluginManager().registerEvents(new Speakjao_afa(this), this);
-		getServer().getPluginManager().registerEvents(new FirstX4Z(this), this);
-		getServer().getPluginManager().registerEvents(new ForestBear(this), this);
-		getServer().getPluginManager().registerEvents(new WhoIsTheBear(this), this);
-		getServer().getPluginManager().registerEvents(new Speakjaojao(this), this);
-		getServer().getPluginManager().registerEvents(new SuperDOOMForYou(this), this);
-		getServer().getPluginManager().registerEvents(new Encounter_jaotan(this), this);
-		getServer().getPluginManager().registerEvents(new AreYouReallyOkay(this), this);
+		registEvent(new It_was_hoe(this));
+		registEvent(new Speakjaotan(this));
+		registEvent(new Firstjao(this));
+		registEvent(new FirstImpatience(this));
+		registEvent(new Speakjao_afa(this));
+		registEvent(new FirstX4Z(this));
+		registEvent(new ForestBear(this));
+		registEvent(new WhoIsTheBear(this));
+		registEvent(new Speakjaojao(this));
+		registEvent(new SuperDOOMForYou(this));
+		registEvent(new Encounter_jaotan(this));
+		registEvent(new AreYouReallyOkay(this));
+		registEvent(new Botch(this));
+	}
+
+	/**
+	 * リスナー設定の簡略化用
+	 * @param listener Listener
+	 */
+	private void registEvent(Listener l) {
+		getServer().getPluginManager().registerEvents(l, this);
 	}
 
 	public static String sqlserver = "jaoafa.com";
