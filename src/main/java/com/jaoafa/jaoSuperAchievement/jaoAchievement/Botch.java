@@ -17,7 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  * 誰もいない時にログインするor誰かがログアウトして1人になる
  * ※隠し要素
  *
- * @since 2018/03/29
+ * @since 2018/04/01
  * @category jao Achievement
  *
  */

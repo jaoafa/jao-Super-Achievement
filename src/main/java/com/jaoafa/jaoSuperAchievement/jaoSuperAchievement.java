@@ -18,6 +18,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.AreYouReallyOkay;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Encounter_jaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstServerLogin;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstX4Z;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Firstjao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.ForestBear;
@@ -58,6 +59,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new Encounter_jaotan(this));
 		registEvent(new AreYouReallyOkay(this));
 		registEvent(new Botch(this));
+		registEvent(new FirstServerLogin(this));// 2018/04/01
 	}
 
 	/**
