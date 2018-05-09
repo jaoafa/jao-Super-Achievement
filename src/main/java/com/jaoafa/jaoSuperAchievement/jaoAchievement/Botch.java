@@ -44,12 +44,23 @@ public class Botch implements Listener {
 	@EventHandler
 	public void onQuit(PlayerQuitEvent event){
 		int i = Bukkit.getServer().getOnlinePlayers().size() - 1;
-		Player player = event.getPlayer();
+		Player botch_player = null;
+		for(Player p : Bukkit.getServer().getOnlinePlayers()){
+			Player left_player = event.getPlayer();
+			if(!p.getUniqueId().equals(left_player.getUniqueId())){
+				botch_player = p;
+			}
+		}
+
+		if(botch_player == null){
+			return;
+		}
+
 		if(i != 1){
 			return;
 		}
-		if(!Achievementjao.getAchievement(player, new AchievementType(16))){
-			player.sendMessage("[" + ChatColor.RED + "j" + ChatColor.GOLD + "a" + ChatColor.YELLOW + "o" + ChatColor.GREEN + "S" + ChatColor.AQUA + "u" + ChatColor.BLUE + "p" + ChatColor.DARK_BLUE + "e" + ChatColor.RED + "r" + ChatColor.GOLD + "A" + ChatColor.YELLOW + "c" + ChatColor.GREEN + "h" + ChatColor.AQUA + "i" + ChatColor.BLUE + "e" + ChatColor.DARK_BLUE + "v" + ChatColor.RED + "e" + ChatColor.GOLD + "m" + ChatColor.YELLOW + "e" + ChatColor.GREEN + "n" + ChatColor.AQUA + "t" + ChatColor.RESET + "] "
+		if(!Achievementjao.getAchievement(botch_player, new AchievementType(16))){
+			botch_player.sendMessage("[" + ChatColor.RED + "j" + ChatColor.GOLD + "a" + ChatColor.YELLOW + "o" + ChatColor.GREEN + "S" + ChatColor.AQUA + "u" + ChatColor.BLUE + "p" + ChatColor.DARK_BLUE + "e" + ChatColor.RED + "r" + ChatColor.GOLD + "A" + ChatColor.YELLOW + "c" + ChatColor.GREEN + "h" + ChatColor.AQUA + "i" + ChatColor.BLUE + "e" + ChatColor.DARK_BLUE + "v" + ChatColor.RED + "e" + ChatColor.GOLD + "m" + ChatColor.YELLOW + "e" + ChatColor.GREEN + "n" + ChatColor.AQUA + "t" + ChatColor.RESET + "] "
 					+ "実績の解除中に問題が発生しました。もう一度お試しください。");
 			return;
 		}

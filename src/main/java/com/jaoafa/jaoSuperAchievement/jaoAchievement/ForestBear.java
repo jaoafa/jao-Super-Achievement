@@ -41,6 +41,10 @@ public class ForestBear implements Listener {
 		SkullMeta skull = (SkullMeta) helmet.getItemMeta();
 		OfflinePlayer offplayer = skull.getOwningPlayer();
 
+		if(offplayer == null){
+			return;
+		}
+
 		if(!offplayer.getUniqueId().toString().equalsIgnoreCase("32ff7cdc-a1b4-450a-aa7e-6af75fe8c37c")){
 			return;
 		}
