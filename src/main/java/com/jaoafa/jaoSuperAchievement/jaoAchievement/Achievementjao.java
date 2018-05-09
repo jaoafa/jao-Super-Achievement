@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Builder;
@@ -18,6 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import com.jaoafa.jaoSuperAchievement.Discord;
 import com.jaoafa.jaoSuperAchievement.jaoSuperAchievement;
+import com.jaoafa.jaoSuperAchievement.AchievementAPI.AchievementAPI;
 import com.jaoafa.jaoSuperAchievement.AchievementAPI.jaoSuperAchievementEvent;
 
 public class Achievementjao {
@@ -48,8 +48,7 @@ public class Achievementjao {
 			return false;
 		}
 
-		Bukkit.broadcastMessage("[" + ChatColor.RED + "j" + ChatColor.GOLD + "a" + ChatColor.YELLOW + "o" + ChatColor.GREEN + "S" + ChatColor.AQUA + "u" + ChatColor.BLUE + "p" + ChatColor.DARK_BLUE + "e" + ChatColor.RED + "r" + ChatColor.GOLD + "A" + ChatColor.YELLOW + "c" + ChatColor.GREEN + "h" + ChatColor.AQUA + "i" + ChatColor.BLUE + "e" + ChatColor.DARK_BLUE + "v" + ChatColor.RED + "e" + ChatColor.GOLD + "m" + ChatColor.YELLOW + "e" + ChatColor.GREEN + "n" + ChatColor.AQUA + "t" + ChatColor.RESET + "] "
-				+ player.getName() + "が「" + type.getName() + "」を取得しました！");
+		Bukkit.broadcastMessage(AchievementAPI.getPrefix() + player.getName() + "が「" + type.getName() + "」を取得しました！");
 		Discord.send("**[jaoSuperAchievement]** " + player.getName() + "が「" + type.getName() + "」を取得しました！");
 
 		jaoSuperAchievementEvent jaoSuperAchievementEvent = new jaoSuperAchievementEvent(player, type);
