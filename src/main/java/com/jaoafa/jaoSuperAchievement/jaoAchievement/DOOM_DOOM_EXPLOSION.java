@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.jaoafa.jaoSuperAchievement.AchievementAPI.AchievementAPI;
 
 /**
- * No. 21
+ * No. 22
  *
  * doom! doom! explosion!
  * TNTをインベントリに入れる
@@ -38,7 +38,7 @@ public class DOOM_DOOM_EXPLOSION implements Listener {
 		for(int n=0; n != invdata.length; n++) {
 			ItemStack is = inv.getItem(n);
 			if(is.getType() == Material.TNT){
-				if(!Achievementjao.getAchievement(player, new AchievementType(21))){
+				if(!Achievementjao.getAchievement(player, new AchievementType(22))){
 					player.sendMessage(AchievementAPI.getPrefix() + "実績の解除中に問題が発生しました。もう一度お試しください。");
 					return;
 				}
