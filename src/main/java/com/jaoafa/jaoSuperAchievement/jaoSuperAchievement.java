@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jaoafa.jaoSuperAchievement.Command.Cmd_JSA;
+import com.jaoafa.jaoSuperAchievement.Event.Event_JSA;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AreYouReallyOkay;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AruAruHell;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
@@ -41,6 +42,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		getCommand("jsa").setExecutor(new Cmd_JSA(this));
+		getServer().getPluginManager().registerEvents(new Event_JSA(this), this);
 		//
 		JavaPlugin = this;
 
@@ -80,6 +82,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 	public static String sqluser;
 	public static String sqlpassword;
 	public static Connection c = null;
+	public static long ConnectionCreate = 0;
 	public static FileConfiguration conf;
 	public static JavaPlugin JavaPlugin;
 	/**
@@ -139,7 +142,14 @@ public class jaoSuperAchievement extends JavaPlugin {
 	public void onDisable() {
 
 	}
-
+	/**
+	 * 新しいStatementを返します。
+	 * @deprecated 使用の仕方によってはSQLインジェクションの被害にあう可能性があります。PreparedStatementを使用するべきです。
+	 * @return 新しいStatement
+	 * @throws SQLException 新しいStatementの取得中にSQLExceptionが発生した場合
+	 * @throws ClassNotFoundException 新しいStatementの取得中にClassNotFoundExceptionが発生した場合
+	 */
+	@Deprecated
 	public static Statement getNewStatement(){
 		Statement statement;
 		try {

@@ -36,7 +36,7 @@ public class AruAruHell implements Listener {
 			return;
 		}
 
-		if(!Achievementjao.getAchievement(player, new AchievementType(18))){
+		if(!Achievementjao.getAchievement(player, new AchievementType(19))){
 			player.sendMessage(AchievementAPI.getPrefix() + "実績の解除中に問題が発生しました。もう一度お試しください。");
 			return;
 		}

@@ -37,6 +37,9 @@ public class DOOM_DOOM_EXPLOSION implements Listener {
 		ItemStack[] invdata = inv.getContents();
 		for(int n=0; n != invdata.length; n++) {
 			ItemStack is = inv.getItem(n);
+			if(is == null){
+				return;
+			}
 			if(is.getType() == Material.TNT){
 				if(!Achievementjao.getAchievement(player, new AchievementType(22))){
 					player.sendMessage(AchievementAPI.getPrefix() + "実績の解除中に問題が発生しました。もう一度お試しください。");
