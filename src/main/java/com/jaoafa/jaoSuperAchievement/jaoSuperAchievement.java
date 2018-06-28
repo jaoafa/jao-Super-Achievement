@@ -17,6 +17,7 @@ import com.jaoafa.jaoSuperAchievement.Command.Cmd_JSA;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AreYouReallyOkay;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AruAruHell;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.DOOM_DOOM_EXPLOSION;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Encounter_jaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstServerLogin;
@@ -64,6 +65,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new FirstServerLogin(this)); // 2018/04/01
 		registEvent(new MouthJariJari(this)); // 2018/06/28
 		registEvent(new AruAruHell(this)); // 2018/06/28
+		registEvent(new DOOM_DOOM_EXPLOSION(this)); // 2018/06/28
 	}
 
 	/**

@@ -31,7 +31,7 @@ public class MouthJariJari implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-	public void OnForestBear(PlayerMoveEvent event){ // インベントリ系のイベントだといまいちなのであえて移動イベント
+	public void OnMouthJariJari(PlayerMoveEvent event){ // インベントリ系のイベントだといまいちなのであえて移動イベント
 		Player player = (Player) event.getPlayer();
 
 		ItemStack helmet = player.getInventory().getHelmet();

@@ -29,7 +29,7 @@ public class AruAruHell implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-	public void OnSpeakjaotan(PlayerChatEvent event){
+	public void OnAruAruHell(PlayerChatEvent event){
 		String message = event.getMessage();
 		Player player = event.getPlayer();
 		if(!message.equalsIgnoreCase(".t")){
