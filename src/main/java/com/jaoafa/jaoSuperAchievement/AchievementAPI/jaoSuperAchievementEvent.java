@@ -1,23 +1,23 @@
 package com.jaoafa.jaoSuperAchievement.AchievementAPI;
 
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AchievementType;
 
 public class jaoSuperAchievementEvent extends Event {
-    private Player player;
+    private OfflinePlayer offplayer;
     private AchievementType type;
     private static final HandlerList handlers = new HandlerList();
 
-    public jaoSuperAchievementEvent(Player player, AchievementType type){
-        this.player = player;
+    public jaoSuperAchievementEvent(OfflinePlayer player, AchievementType type){
+        this.offplayer = player;
         this.type = type;
     }
 
-    public Player getPlayer(){
-    	return player;
+    public OfflinePlayer getPlayer(){
+    	return offplayer;
     }
 
     public AchievementType getType(){

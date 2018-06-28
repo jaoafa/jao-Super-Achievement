@@ -10,6 +10,7 @@ import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Builder;
 import org.bukkit.FireworkEffect.Type;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.meta.FireworkMeta;
@@ -71,8 +72,27 @@ public class Achievementjao {
 		}.runTaskLater(jaoSuperAchievement.JavaPlugin(), 1);
 		return true;
 	}
+	public static boolean getAchievement(OfflinePlayer offplayer, AchievementType type){
+		if(isAlreadyGettedAchievement(offplayer, type)){
+			return true; // すでに取得済みだけどエラーじゃないので
+		}
+		Statement statement = jaoSuperAchievement.getNewStatement();
 
-	public static boolean isAlreadyGettedAchievement(Player player, AchievementType type){
+		try {
+			statement.executeUpdate("INSERT INTO jaoSuperAchievement (player, uuid, achievement_typeid, date) VALUES ('" + offplayer.getName() + "', '" + offplayer.getUniqueId() + "', " + type.getID() + ", CURRENT_TIMESTAMP);");
+		} catch (SQLException e) {
+			jaoSuperAchievement.report(e);
+			return false;
+		}
+
+		Bukkit.broadcastMessage(AchievementAPI.getPrefix() + offplayer.getName() + "が「" + type.getName() + "」を取得しました！");
+		Discord.send("**[jaoSuperAchievement]** " + offplayer.getName() + "が「" + type.getName() + "」を取得しました！");
+
+		jaoSuperAchievementEvent jaoSuperAchievementEvent = new jaoSuperAchievementEvent(offplayer, type);
+		Bukkit.getServer().getPluginManager().callEvent(jaoSuperAchievementEvent);
+		return true;
+	}
+	public static boolean isAlreadyGettedAchievement(OfflinePlayer player, AchievementType type){
 		Statement statement = jaoSuperAchievement.getNewStatement();
 		try {
 			ResultSet res = statement.executeQuery("SELECT * FROM jaoSuperAchievement WHERE uuid = '" + player.getUniqueId().toString() + "' AND achievement_typeid = " + type.getID() + ";");
