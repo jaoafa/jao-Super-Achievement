@@ -12,6 +12,7 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -32,7 +33,7 @@ public class Event_JSA implements Listener {
 	public Event_JSA(JavaPlugin plugin) {
 		this.plugin = plugin;
 	}
-	static Map<String, Integer> jSA = new HashMap<>();
+	static Map<String, PlayerPageData> jSA = new HashMap<>();
 	@EventHandler(ignoreCancelled = true)
 	public void onPostClick(InventoryClickEvent event) {
 		if(event.getWhoClicked().getType() != EntityType.PLAYER) return;
@@ -46,7 +47,9 @@ public class Event_JSA implements Listener {
 			player.sendMessage(AchievementAPI.getPrefix() + "現在開いているページを取得できませんでした。再度開きなおしてください。");
 			return;
 		}
-		int page = jSA.get(player.getName());
+		PlayerPageData ppd = jSA.get(player.getName());
+		int page = ppd.getPage();
+		OfflinePlayer offplayer = ppd.getViewPlayer();
 		ItemStack is = event.getClickedInventory().getItem(event.getSlot());
 		if(is == null || is.getType() == Material.AIR){
 			return;
@@ -59,20 +62,20 @@ public class Event_JSA implements Listener {
 
 		if(event.getSlot() == 0){
 			// 前へ
-			openPage(player, page - 1);
+			openPage(player, offplayer, page - 1);
 		}else if(event.getSlot() == 8){
 			// 次へ
-			openPage(player, page + 1);
+			openPage(player, offplayer, page + 1);
 		}
 	}
-	public static void openPage(Player player, int page){
+	public static void openPage(Player player, OfflinePlayer offplayer, int page){
 		try{
-			Inventory inv = Bukkit.getServer().createInventory(player, 4 * 9, "jaoSuperAchievement");
+			Inventory inv = Bukkit.getServer().createInventory(player, 4 * 9, offplayer.getName() + "のjaoSuperAchievement");
 
-			int Getted = getGettedAchievementCount(player.getUniqueId());
-			int notGetted = getNotGettedAchievementCount(player.getUniqueId());
+			int Getted = getGettedAchievementCount(offplayer.getUniqueId());
+			int notGetted = getNotGettedAchievementCount(offplayer.getUniqueId());
 
-			setItem(inv, 4, Material.SEA_LANTERN, AchievementAPI.getjaoSuperAchievement(),
+			setItemSkull(inv, 4, offplayer.getName(), AchievementAPI.getjaoSuperAchievement(),
 					"" + ChatColor.RESET + ChatColor.AQUA + "--- " + page + " ページ ---",
 					"" + ChatColor.RESET + ChatColor.GREEN + "解除済み実績数: " + Getted + "個",
 					"" + ChatColor.RESET + ChatColor.RED + "未解除実績数: " + notGetted + "個");
@@ -93,7 +96,7 @@ public class Event_JSA implements Listener {
 				String date = res.getString("date");
 				int gettedplayercount = getGettedPlayerCount(id);
 
-				boolean getted = isGetted(player, id);
+				boolean getted = isGetted(offplayer, id);
 				Material material;
 				String msg;
 				String hiddenmsg = "";
@@ -139,7 +142,8 @@ public class Event_JSA implements Listener {
 				setItem(inv, 8, Material.BARRIER, ChatColor.RESET + "閉じる");
 			}
 
-			jSA.put(player.getName(), page);
+			PlayerPageData ppd = new PlayerPageData(player, page);
+			jSA.put(player.getName(), ppd);
 			player.openInventory(inv);
 			return;
 		} catch (SQLException | ClassNotFoundException e) {
@@ -185,10 +189,21 @@ public class Event_JSA implements Listener {
 		item.setItemMeta(skull_meta);
 		inv.setItem(index, item);
 	}
-	static boolean isGetted(Player player, int id){
+	@SuppressWarnings("deprecation")
+	static void setItemSkull(Inventory inv, int index, String name, String title, String... lore){
+		ItemStack item = new ItemStack(Material.SKULL_ITEM);
+		item.setDurability((short) 3);
+		SkullMeta skull_meta = (SkullMeta) item.getItemMeta();
+		skull_meta.setOwner(name);
+		skull_meta.setDisplayName(title);
+		if(lore != null) skull_meta.setLore(Arrays.asList(lore));
+		item.setItemMeta(skull_meta);
+		inv.setItem(index, item);
+	}
+	static boolean isGetted(OfflinePlayer offplayer, int id){
 		try {
 			PreparedStatement statement = MySQL.getNewPreparedStatement("SELECT * FROM jaoSuperAchievement WHERE uuid = ? AND achievement_typeid = ?;");
-			statement.setString(1, player.getUniqueId().toString());
+			statement.setString(1, offplayer.getUniqueId().toString());
 			statement.setInt(2, id);
 			ResultSet res = statement.executeQuery();
 			if(res.next()){
@@ -261,4 +276,5 @@ public class Event_JSA implements Listener {
 			return -1;
 		}
 	}
+
 }
