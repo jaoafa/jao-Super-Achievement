@@ -38,7 +38,7 @@ public class Event_JSA implements Listener {
 	public void onPostClick(InventoryClickEvent event) {
 		if(event.getWhoClicked().getType() != EntityType.PLAYER) return;
 		if(event.getClickedInventory() == null) return;
-		if(!event.getClickedInventory().getName().equals("jaoSuperAchievement")) return;
+		if(!event.getClickedInventory().getName().endsWith("jaoSuperAchievement")) return;
 		Player player = (Player) event.getWhoClicked();
 
 		event.setCancelled(true);
