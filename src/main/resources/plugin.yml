@@ -1,6 +1,6 @@
-name: jaoSuperAchievement
+name: ${project.artifactId}
 main: com.jaoafa.jaoSuperAchievement.jaoSuperAchievement
-version: 0.0.1
+version: ${project.version}
 description: jao実績
 database: true
 softdepend: [PermissionsEx, LuckPerms]
