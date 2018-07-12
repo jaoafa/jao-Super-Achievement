@@ -19,6 +19,7 @@ import com.jaoafa.jaoSuperAchievement.AchievementAPI.AchievementAPI;
  * もりのくまさん
  * くまのアタマをかぶる
  * mine_book000の頭をかぶる
+ * ※隠し要素
  *
  * @since 2018/03/20
  * @category jao Achievement
