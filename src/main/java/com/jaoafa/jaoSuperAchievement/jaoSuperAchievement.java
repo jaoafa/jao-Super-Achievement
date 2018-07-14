@@ -18,7 +18,6 @@ import com.jaoafa.jaoSuperAchievement.Event.Event_JSA;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AreYouReallyOkay;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AruAruHell;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
-import com.jaoafa.jaoSuperAchievement.jaoAchievement.Charisma_jaoest;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.DOOM_DOOM_EXPLOSION;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Encounter_jaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
@@ -26,16 +25,13 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstServerLogin;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstX4Z;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Firstjao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.ForestBear;
-import com.jaoafa.jaoSuperAchievement.jaoAchievement.Forever_jaoest;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.It_was_hoe;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.Jaoest;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.MouthJariJari;
-import com.jaoafa.jaoSuperAchievement.jaoAchievement.Normal_jaoest;
-import com.jaoafa.jaoSuperAchievement.jaoAchievement.Sincerity_jaoest;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjao_afa;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaojao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.SuperDOOMForYou;
-import com.jaoafa.jaoSuperAchievement.jaoAchievement.Super_jaoest;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.WhoIsTheBear;
 
 public class jaoSuperAchievement extends JavaPlugin {
@@ -53,6 +49,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 
 		LoadjaoAchievements();
 		Load_Config(); // Config Load
+		LoadTask();
 	}
 
 	private void LoadjaoAchievements(){
@@ -73,11 +70,6 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new MouthJariJari(this)); // 2018/06/28
 		registEvent(new AruAruHell(this)); // 2018/06/28
 		registEvent(new DOOM_DOOM_EXPLOSION(this)); // 2018/06/28
-		registEvent(new Forever_jaoest(this)); // 2018/07/12
-		registEvent(new Charisma_jaoest(this)); // 2018/07/12
-		registEvent(new Super_jaoest(this)); // 2018/07/12
-		registEvent(new Sincerity_jaoest(this)); // 2018/07/12
-		registEvent(new Normal_jaoest(this)); // 2018/07/12
 
 	}
 
@@ -87,6 +79,10 @@ public class jaoSuperAchievement extends JavaPlugin {
 	 */
 	private void registEvent(Listener l) {
 		getServer().getPluginManager().registerEvents(l, this);
+	}
+
+	void LoadTask(){
+		new Jaoest(this).runTaskTimerAsynchronously(this, 0L, 6000L);
 	}
 
 	public static String sqlserver = "jaoafa.com";
