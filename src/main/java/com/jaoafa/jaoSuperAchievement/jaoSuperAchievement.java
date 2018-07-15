@@ -16,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.jaoafa.jaoSuperAchievement.Command.Cmd_JSA;
 import com.jaoafa.jaoSuperAchievement.Event.Event_JSA;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AreYouReallyOkay;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.ArtIsExplosion;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AruAruHell;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Begin_architecture;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
@@ -78,6 +79,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new TrySeeInvisible(this)); // 2018/07/16
 		registEvent(new Begin_architecture(this)); // 2018/07/16
 		registEvent(new FirstMimicry(this)); // 2018/07/16
+		registEvent(new ArtIsExplosion(this)); // 2018/07/16
 	}
 
 	/**
