@@ -38,7 +38,7 @@ public class DOOM_DOOM_EXPLOSION implements Listener {
 		for(int n=0; n != invdata.length; n++) {
 			ItemStack is = inv.getItem(n);
 			if(is == null){
-				return;
+				continue;
 			}
 			if(is.getType() == Material.TNT){
 				if(!Achievementjao.getAchievement(player, new AchievementType(22))){
