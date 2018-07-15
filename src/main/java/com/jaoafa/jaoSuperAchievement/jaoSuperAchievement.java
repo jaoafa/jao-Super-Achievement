@@ -22,6 +22,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.DOOM_DOOM_EXPLOSION;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Encounter_jaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstMimicry;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstServerLogin;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstX4Z;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Firstjao;
@@ -76,6 +77,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new Waste_disinfection(this)); // 2018/07/16
 		registEvent(new TrySeeInvisible(this)); // 2018/07/16
 		registEvent(new Begin_architecture(this)); // 2018/07/16
+		registEvent(new FirstMimicry(this)); // 2018/07/16
 	}
 
 	/**
