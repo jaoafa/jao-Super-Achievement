@@ -135,7 +135,7 @@ public class Event_JSA implements Listener {
 			}else if(page >= 2){
 				setItemSkull(inv, 0, "MHF_ArrowLeft", ChatColor.RESET + "前へ");
 			}
-			if(all > (page * 27) + 1){
+			if(all >= (page * 27) + 1){
 				// 次へを追加
 				setItemSkull(inv, 8, "MHF_ArrowRight", ChatColor.RESET + "次へ");
 			}else{
