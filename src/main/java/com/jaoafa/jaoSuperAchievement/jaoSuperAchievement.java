@@ -32,6 +32,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjao_afa;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaojao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.SuperDOOMForYou;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.Waste_disinfection;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.WhoIsTheBear;
 
 public class jaoSuperAchievement extends JavaPlugin {
@@ -70,6 +71,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new MouthJariJari(this)); // 2018/06/28
 		registEvent(new AruAruHell(this)); // 2018/06/28
 		registEvent(new DOOM_DOOM_EXPLOSION(this)); // 2018/06/28
+		registEvent(new Waste_disinfection(this)); // 2018/07/16
 
 	}
 
