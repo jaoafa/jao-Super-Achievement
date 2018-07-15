@@ -1,8 +1,8 @@
 package com.jaoafa.jaoSuperAchievement.jaoAchievement;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Random;
 
 import org.bukkit.Bukkit;
@@ -17,6 +17,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import com.jaoafa.jaoSuperAchievement.Discord;
+import com.jaoafa.jaoSuperAchievement.MySQL;
 import com.jaoafa.jaoSuperAchievement.jaoSuperAchievement;
 import com.jaoafa.jaoSuperAchievement.AchievementAPI.AchievementAPI;
 import com.jaoafa.jaoSuperAchievement.AchievementAPI.jaoSuperAchievementEvent;
@@ -40,11 +41,14 @@ public class Achievementjao {
 		if(isAlreadyGettedAchievement(player, type)){
 			return true; // すでに取得済みだけどエラーじゃないので
 		}
-		Statement statement = jaoSuperAchievement.getNewStatement();
 
 		try {
-			statement.executeUpdate("INSERT INTO jaoSuperAchievement (player, uuid, achievement_typeid, date) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', " + type.getID() + ", CURRENT_TIMESTAMP);");
-		} catch (SQLException e) {
+			PreparedStatement statement = MySQL.getNewPreparedStatement("INSERT INTO jaoSuperAchievement (player, uuid, achievement_typeid) VALUES (?, ?, ?);");
+			statement.setString(1, player.getName());
+			statement.setString(2, player.getUniqueId().toString());
+			statement.setInt(3, type.getID());
+			statement.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
 			jaoSuperAchievement.report(e);
 			return false;
 		}
@@ -76,11 +80,14 @@ public class Achievementjao {
 		if(isAlreadyGettedAchievement(offplayer, type)){
 			return true; // すでに取得済みだけどエラーじゃないので
 		}
-		Statement statement = jaoSuperAchievement.getNewStatement();
 
 		try {
-			statement.executeUpdate("INSERT INTO jaoSuperAchievement (player, uuid, achievement_typeid, date) VALUES ('" + offplayer.getName() + "', '" + offplayer.getUniqueId() + "', " + type.getID() + ", CURRENT_TIMESTAMP);");
-		} catch (SQLException e) {
+			PreparedStatement statement = MySQL.getNewPreparedStatement("INSERT INTO jaoSuperAchievement (player, uuid, achievement_typeid) VALUES (?, ?, ?);");
+			statement.setString(1, offplayer.getName());
+			statement.setString(2, offplayer.getUniqueId().toString());
+			statement.setInt(3, type.getID());
+			statement.executeUpdate();
+		} catch (SQLException | ClassNotFoundException e) {
 			jaoSuperAchievement.report(e);
 			return false;
 		}
@@ -93,15 +100,17 @@ public class Achievementjao {
 		return true;
 	}
 	public static boolean isAlreadyGettedAchievement(OfflinePlayer player, AchievementType type){
-		Statement statement = jaoSuperAchievement.getNewStatement();
 		try {
-			ResultSet res = statement.executeQuery("SELECT * FROM jaoSuperAchievement WHERE uuid = '" + player.getUniqueId().toString() + "' AND achievement_typeid = " + type.getID() + ";");
+			PreparedStatement statement = MySQL.getNewPreparedStatement("SELECT * FROM jaoSuperAchievement WHERE uuid = ? AND achievement_typeid = ?");
+			statement.setString(1, player.getUniqueId().toString());
+			statement.setInt(2, type.getID());
+			ResultSet res = statement.executeQuery();
 			if(res.next()){
 				return true;
 			}else{
 				return false;
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			jaoSuperAchievement.report(e);
 			return false;
 		}

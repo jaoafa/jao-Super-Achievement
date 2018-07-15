@@ -1,9 +1,10 @@
 package com.jaoafa.jaoSuperAchievement.jaoAchievement;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
+import com.jaoafa.jaoSuperAchievement.MySQL;
 import com.jaoafa.jaoSuperAchievement.jaoSuperAchievement;
 
 public class AchievementType {
@@ -11,9 +12,10 @@ public class AchievementType {
 	private String name;
 	private String description;
 	public AchievementType(int id){
-		Statement statement = jaoSuperAchievement.getNewStatement();
 		try {
-			ResultSet res = statement.executeQuery("SELECT * FROM jaoSuperAchievement_Type WHERE id = " + id);
+			PreparedStatement statement = MySQL.getNewPreparedStatement("SELECT * FROM jaoSuperAchievement_Type WHERE id = ?");
+			statement.setInt(1, id);
+			ResultSet res = statement.executeQuery();
 			if(res.next()){
 				this.id = res.getInt("id");
 				name = res.getString("name");
@@ -21,7 +23,7 @@ public class AchievementType {
 			}else{
 				throw new IllegalArgumentException("指定されたIDのjaoSuperAchievementは見つかりません。");
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | ClassNotFoundException e) {
 			jaoSuperAchievement.report(e);
 		}
 	}
