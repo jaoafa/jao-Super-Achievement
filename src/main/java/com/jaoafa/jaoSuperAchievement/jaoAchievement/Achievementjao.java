@@ -3,7 +3,12 @@ package com.jaoafa.jaoSuperAchievement.jaoAchievement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -99,13 +104,29 @@ public class Achievementjao {
 		Bukkit.getServer().getPluginManager().callEvent(jaoSuperAchievementEvent);
 		return true;
 	}
+	static Map<UUID, List<Integer>> GettedAchievementCache = new HashMap<>(); // uuid, AchievementID
 	public static boolean isAlreadyGettedAchievement(OfflinePlayer player, AchievementType type){
+		if(GettedAchievementCache.containsKey(player.getUniqueId())){
+			List<Integer> gettedList = GettedAchievementCache.get(player.getUniqueId());
+			if(gettedList.contains(type.getID())){
+				return true;
+			}
+		}
 		try {
 			PreparedStatement statement = MySQL.getNewPreparedStatement("SELECT * FROM jaoSuperAchievement WHERE uuid = ? AND achievement_typeid = ?");
 			statement.setString(1, player.getUniqueId().toString());
 			statement.setInt(2, type.getID());
 			ResultSet res = statement.executeQuery();
 			if(res.next()){
+				if(GettedAchievementCache.containsKey(player.getUniqueId())){
+					List<Integer> gettedList = GettedAchievementCache.get(player.getUniqueId());
+					gettedList.add(type.getID());
+					GettedAchievementCache.put(player.getUniqueId(), gettedList);
+				}else{
+					List<Integer> gettedList = new ArrayList<>();
+					gettedList.add(type.getID());
+					GettedAchievementCache.put(player.getUniqueId(), gettedList);
+				}
 				return true;
 			}else{
 				return false;
