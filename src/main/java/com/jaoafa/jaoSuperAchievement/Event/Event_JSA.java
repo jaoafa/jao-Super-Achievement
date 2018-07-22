@@ -142,7 +142,7 @@ public class Event_JSA implements Listener {
 				setItem(inv, 8, Material.BARRIER, ChatColor.RESET + "閉じる");
 			}
 
-			PlayerPageData ppd = new PlayerPageData(player, page);
+			PlayerPageData ppd = new PlayerPageData(offplayer, page);
 			jSA.put(player.getName(), ppd);
 			player.openInventory(inv);
 			return;
