@@ -33,6 +33,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.Hoooooooooo;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.It_was_hoe;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Jaoest;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.MouthJariJari;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.SpeakOnlyafa;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjao_afa;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaojao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaotan;
@@ -86,6 +87,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new Hoooooooooo(this)); // 2018/08/20
 		registEvent(new CryingOutLoveInTheCenterOfTheWorld(this)); // 2018/08/20
 		registEvent(new VeryFreeTimePerson(this)); // 2018/08/20
+		registEvent(new SpeakOnlyafa(this)); // 2018/08/20
 	}
 
 	/**
