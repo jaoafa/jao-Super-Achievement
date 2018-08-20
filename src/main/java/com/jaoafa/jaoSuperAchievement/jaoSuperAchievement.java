@@ -28,6 +28,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstServerLogin;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstX4Z;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Firstjao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.ForestBear;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.Hoooooooooo;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.It_was_hoe;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Jaoest;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.MouthJariJari;
@@ -80,6 +81,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new Begin_architecture(this)); // 2018/07/16
 		registEvent(new FirstMimicry(this)); // 2018/07/16
 		registEvent(new ArtIsExplosion(this)); // 2018/07/16
+		registEvent(new Hoooooooooo(this)); // 2018/08/20
 	}
 
 	/**
