@@ -1,5 +1,6 @@
 package com.jaoafa.jaoSuperAchievement.jaoAchievement;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,9 +13,9 @@ import com.jaoafa.jaoSuperAchievement.AchievementAPI.AchievementAPI;
 /**
  * No. 34
  *
- * ほおおおおおおおおおおおｗｗｗｗｗ
- * ほおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおおｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗ
- * (((（ ´◔ ω◔`）)))ほおおおおおおおおおおおおおおおおおおおおおおおｗｗｗｗｗｗｗｗｗｗｗ と発言した場合
+ * 世界の中心で愛をさけぶ
+ * x0y0でなにかチャットを送る
+ * x0y0でなにかチャットを送る
  * ※隠し要素
  *
  * @since 2018/08/20
@@ -22,21 +23,22 @@ import com.jaoafa.jaoSuperAchievement.AchievementAPI.AchievementAPI;
  *
  */
 @SuppressWarnings("deprecation")
-public class Hoooooooooo implements Listener {
+public class CryingOutLoveInTheCenterOfTheWorld implements Listener {
 	JavaPlugin plugin;
-	public Hoooooooooo(JavaPlugin plugin) {
+	public CryingOutLoveInTheCenterOfTheWorld(JavaPlugin plugin) {
 		this.plugin = plugin;
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void OnSpeakjaojao(PlayerChatEvent event){
-		String message = event.getMessage();
 		Player player = event.getPlayer();
-		if(!message.equalsIgnoreCase("(((（ ´◔ ω◔`）)))ほおおおおおおおおおおおおおおおおおおおおおおおｗｗｗｗｗｗｗｗｗｗｗ")){
+
+		Location loc = player.getLocation();
+		if(loc.getBlockX() != 0 && loc.getBlockZ() != 0){
 			return;
 		}
 
-		if(!Achievementjao.getAchievement(player, new AchievementType(34))){
+		if(!Achievementjao.getAchievement(player, new AchievementType(35))){
 			player.sendMessage(AchievementAPI.getPrefix() + "実績の解除中に問題が発生しました。もう一度お試しください。");
 			return;
 		}

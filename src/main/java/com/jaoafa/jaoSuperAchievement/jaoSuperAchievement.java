@@ -20,6 +20,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.ArtIsExplosion;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.AruAruHell;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Begin_architecture;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Botch;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.CryingOutLoveInTheCenterOfTheWorld;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.DOOM_DOOM_EXPLOSION;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Encounter_jaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.FirstImpatience;
@@ -82,6 +83,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new FirstMimicry(this)); // 2018/07/16
 		registEvent(new ArtIsExplosion(this)); // 2018/07/16
 		registEvent(new Hoooooooooo(this)); // 2018/08/20
+		registEvent(new CryingOutLoveInTheCenterOfTheWorld(this)); // 2018/08/20
 	}
 
 	/**
