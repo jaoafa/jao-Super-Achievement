@@ -38,6 +38,7 @@ import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaojao;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Speakjaotan;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.SuperDOOMForYou;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.TrySeeInvisible;
+import com.jaoafa.jaoSuperAchievement.jaoAchievement.VeryFreeTimePerson;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.Waste_disinfection;
 import com.jaoafa.jaoSuperAchievement.jaoAchievement.WhoIsTheBear;
 
@@ -84,6 +85,7 @@ public class jaoSuperAchievement extends JavaPlugin {
 		registEvent(new ArtIsExplosion(this)); // 2018/07/16
 		registEvent(new Hoooooooooo(this)); // 2018/08/20
 		registEvent(new CryingOutLoveInTheCenterOfTheWorld(this)); // 2018/08/20
+		registEvent(new VeryFreeTimePerson(this)); // 2018/08/20
 	}
 
 	/**

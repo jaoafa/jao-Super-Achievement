@@ -30,7 +30,7 @@ public class CryingOutLoveInTheCenterOfTheWorld implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-	public void OnSpeakjaojao(PlayerChatEvent event){
+	public void OnSpeakCenter(PlayerChatEvent event){
 		Player player = event.getPlayer();
 
 		Location loc = player.getLocation();

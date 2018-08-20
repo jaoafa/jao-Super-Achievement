@@ -29,7 +29,7 @@ public class Hoooooooooo implements Listener {
 	}
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
-	public void OnSpeakjaojao(PlayerChatEvent event){
+	public void OnSpeakHoooooooooo(PlayerChatEvent event){
 		String message = event.getMessage();
 		Player player = event.getPlayer();
 		if(!message.equalsIgnoreCase("(((（ ´◔ ω◔`）)))ほおおおおおおおおおおおおおおおおおおおおおおおｗｗｗｗｗｗｗｗｗｗｗ")){
